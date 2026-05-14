@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Switch Login ETH Button
 // @match       https://wayf.switch.ch/SWITCHaai/WAYF
-// @version     1.0.0
+// @version     1.0.1
 // @run-at      document-end
 // ==/UserScript==
 

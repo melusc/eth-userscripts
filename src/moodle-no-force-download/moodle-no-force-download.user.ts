@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Moodle No Force Download
 // @match       https://moodle-app2.let.ethz.ch/*
-// @version     1.0.1
+// @version     1.0.2
 // @run-at      document-start
 // ==/UserScript==
 

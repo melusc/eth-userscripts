@@ -157,7 +157,7 @@ function enhanceMetadata(
 
 	metadata.setKey('updateURL', updateURL.href);
 	metadata.setKey('downloadURL', updateURL.href);
-	metadata.setKey('homepageURL', 'https://github.com/melusc/userscripts');
+	metadata.setKey('homepageURL', 'https://github.com/melusc/eth-userscripts');
 }
 
 export class MetadataPlugin {

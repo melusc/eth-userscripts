@@ -3,7 +3,7 @@
 // @match       https://moodle-app2.let.ethz.ch/course/view.php*
 // @match       https://moodle-app2.let.ethz.ch/course/section.php*
 // @match       https://moodle-app2.let.ethz.ch/mod/resource/view.php*
-// @version     1.1.0
+// @version     1.1.1
 // @run-at      document-start
 // ==/UserScript==
 
