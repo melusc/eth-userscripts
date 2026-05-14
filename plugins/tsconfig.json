@@ -1,0 +1,6 @@
+{
+	"extends": "@lusc/tsconfig/bundler",
+	"compilerOptions": {
+		"types": ["node"]
+	}
+}

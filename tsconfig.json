@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"declaration": false,
+		"types": ["node"],
+		"verbatimModuleSyntax": true,
+		"rootDir": "./src"
+	},
+	"extends": "@lusc/tsconfig",
+	"include": ["src"]
+}

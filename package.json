@@ -1,0 +1,45 @@
+{
+	"author": "",
+	"dependencies": {
+		"prettier": "^3.8.3",
+		"prettier-plugin-java": "^2.8.1"
+	},
+	"description": "",
+	"devDependencies": {
+		"@babel/parser": "^7.29.3",
+		"@babel/traverse": "^7.29.0",
+		"@babel/types": "^7.29.0",
+		"@lusc/eslint-config": "^10.2.0",
+		"@lusc/tsconfig": "^7.2.0",
+		"@types/babel__traverse": "^7.28.0",
+		"@types/node": "^24.12.2",
+		"clean-webpack-plugin": "^4.0.0",
+		"concurrently": "^9.2.1",
+		"eslint": "^10.3.0",
+		"minimizer-webpack-plugin": "^5.6.0",
+		"serve": "^14.2.6",
+		"ts-loader": "^9.5.7",
+		"typescript": "^6.0.3",
+		"webpack": "^5.106.2",
+		"webpack-cli": "^7.0.2"
+	},
+	"type": "module",
+	"license": "MIT",
+	"name": "userscripts",
+	"private": true,
+	"scripts": {
+		"build": "tsc --noEmit && pnpm webpack && pnpm check-metadata",
+		"fmt": "prettier -w . && eslint --fix",
+		"start": "concurrently pnpm:webpack:w pnpm:serve -r -k",
+		"webpack": "webpack -c production.config.js --env PROD",
+		"webpack:w": "webpack -c production.config.js -w",
+		"serve": "serve dist -L",
+		"check-metadata": "node scripts/check-metadata.js"
+	},
+	"engines": {
+		"node": "^24.15.0"
+	},
+	"sideEffects": false,
+	"version": "1.0.0",
+	"packageManager": "pnpm@11.0.6"
+}
