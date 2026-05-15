@@ -1,5 +1,8 @@
 {
-	"author": "",
+	"author": {
+		"name": "Luca Schnellmann",
+		"email": "oss@lusc.ch"
+	},
 	"dependencies": {
 		"prettier": "^3.8.3",
 		"prettier-plugin-java": "^2.8.1"
@@ -24,8 +27,8 @@
 		"webpack-cli": "^7.0.2"
 	},
 	"type": "module",
-	"license": "MIT",
-	"name": "userscripts",
+	"license": "GPL-3.0-or-later",
+	"name": "eth-userscripts",
 	"private": true,
 	"scripts": {
 		"build": "tsc --noEmit && pnpm webpack && pnpm check-metadata",
