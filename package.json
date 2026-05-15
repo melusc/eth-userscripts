@@ -15,7 +15,7 @@
 		"@lusc/eslint-config": "^10.2.0",
 		"@lusc/tsconfig": "^7.2.0",
 		"@types/babel__traverse": "^7.28.0",
-		"@types/node": "^24.12.2",
+		"@types/node": "^24.12.4",
 		"clean-webpack-plugin": "^4.0.0",
 		"concurrently": "^9.2.1",
 		"eslint": "^10.3.0",
@@ -44,5 +44,5 @@
 	},
 	"sideEffects": false,
 	"version": "1.0.0",
-	"packageManager": "pnpm@11.0.6"
+	"packageManager": "pnpm@11.1.0"
 }
