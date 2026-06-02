@@ -47,6 +47,16 @@ This userscript adds a button on the Switch login page allowing a more easy redi
 
 ![Screenshot of the ETH login page redirect button on the Switch login page](images/switch-login-eth-button.png)
 
+## Automatic Redirect
+
+[Install](https://userscripts.lusc.ch/eth/automatic-redirect/automatic-redirect.user.js)
+
+This userscripts automatically redirects steps that shouldn't need user interaction.
+
+Currently redirects:
+
+- Moodle Shibboleth login (where you select your organisation). Redirects to ETH automatically.
+
 ## License
 
     This program is free software: you can redistribute it and/or modify
