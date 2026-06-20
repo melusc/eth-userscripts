@@ -1,0 +1,23 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index ffe9fef807d35c9a2fcf69de68d5120058a90cee..b163952b5b52286d7a8a6fefb41e2a6acac335b7 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -1,6 +1,9 @@
+ import { Language, Parser } from "web-tree-sitter";
+ import { util } from "prettier";
+ import { builders, utils } from "prettier/doc";
++
++import treeSitterJavaOrchard from './tree-sitter-java_orchard.wasm';
++
+ //#region src/options.ts
+ var options_default = {
+ 	arrowParens: {
+@@ -2151,7 +2154,7 @@ var parser_default = {
+ const parser = (async () => {
+ 	await Parser.init();
+ 	const parser = new Parser();
+-	const Java = await Language.load(new URL("./tree-sitter-java_orchard.wasm", import.meta.url));
++	const Java = await Language.load(treeSitterJavaOrchard);
+ 	parser.setLanguage(Java);
+ 	return parser;
+ })();

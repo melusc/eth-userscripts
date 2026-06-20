@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Prettier Code Expert
 // @match       https://expert.ethz.ch/*
-// @version     1.1.0
+// @version     1.2.0
 // @run-at      document-start
 // ==/UserScript==
 
@@ -104,7 +104,6 @@ async function formatEditor() {
 		alert('Could not extract code for formatting.');
 		return;
 	}
-	console.log(state);
 
 	const result = await formatCode(
 		state.state.editorContent,

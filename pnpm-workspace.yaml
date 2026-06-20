@@ -2,6 +2,7 @@ allowBuilds:
   unrs-resolver: false
 
 patchedDependencies:
+  prettier-plugin-java: patches/prettier-plugin-java.patch
   web-tree-sitter: patches/web-tree-sitter.patch
 
 trustPolicy: no-downgrade

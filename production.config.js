@@ -72,7 +72,7 @@ const config = (environment = {}) => ({
 			},
 			{
 				test: /\.wasm$/,
-				type: 'asset/inline',
+				type: 'asset/bytes',
 			},
 		],
 	},

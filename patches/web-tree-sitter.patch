@@ -1,40 +1,15 @@
 diff --git a/web-tree-sitter.js b/web-tree-sitter.js
-index 449545cbe28eabba64252ea5097a7d8f0a686ba8..4f64811560537a23997e14749ae09f38a25d0d1f 100644
+index 449545cbe28eabba64252ea5097a7d8f0a686ba8..7ee945d4ebc60b5b57b33ba05a191e204a37ec32 100644
 --- a/web-tree-sitter.js
 +++ b/web-tree-sitter.js
-@@ -1,6 +1,22 @@
+@@ -1,3 +1,5 @@
++import treeSitterWasmBytes from './web-tree-sitter.wasm';
++
  var __defProp = Object.defineProperty;
  var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
  
-+function decodeBase64DataUri(url) {
-+  if (url instanceof URL) url = url.href;
-+  else if (typeof url !== 'string') return undefined;
-+
-+  const b64index = url.indexOf('base64,');
-+  if (b64index !== -1 && url.startsWith('data:')) {
-+    const decoded = atob(url.slice(b64index + 7));
-+    const bytes = new Uint8Array(decoded.length);
-+    for (let i = 0; i < decoded.length; i++) {
-+        bytes[i] = decoded.charCodeAt(i);
-+    }
-+    return bytes;
-+  }
-+  return undefined;
-+}
-+
- // src/edit.ts
- var Edit = class {
-   static {
-@@ -1481,11 +1497,14 @@ var Language = class _Language {
-    */
-   static async load(input) {
-     let binary2;
--    if (input instanceof Uint8Array) {
-+    const bytes = decodeBase64DataUri(input);
-+
-+    if (bytes !== undefined) {
-+      binary2 = bytes;
-+    } else if (input instanceof Uint8Array) {
+@@ -1484,8 +1486,7 @@ var Language = class _Language {
+     if (input instanceof Uint8Array) {
        binary2 = input;
      } else if (globalThis.process?.versions.node) {
 -      const fs2 = await import("fs/promises");
@@ -43,7 +18,7 @@ index 449545cbe28eabba64252ea5097a7d8f0a686ba8..4f64811560537a23997e14749ae09f38
      } else {
        const response = await fetch(input);
        if (!response.ok) {
-@@ -1522,8 +1541,7 @@ async function Module2(moduleArg = {}) {
+@@ -1522,8 +1523,7 @@ async function Module2(moduleArg = {}) {
    var Module = moduleArg;
    var ENVIRONMENT_IS_WEB = typeof window == "object";
    var ENVIRONMENT_IS_WORKER = typeof WorkerGlobalScope != "undefined";
@@ -53,7 +28,7 @@ index 449545cbe28eabba64252ea5097a7d8f0a686ba8..4f64811560537a23997e14749ae09f38
      const { createRequire } = await import("module");
      var require = createRequire(import.meta.url);
    }
-@@ -1546,7 +1564,7 @@ async function Module2(moduleArg = {}) {
+@@ -1546,7 +1546,7 @@ async function Module2(moduleArg = {}) {
    }
    __name(locateFile, "locateFile");
    var readAsync, readBinary;
@@ -62,17 +37,48 @@ index 449545cbe28eabba64252ea5097a7d8f0a686ba8..4f64811560537a23997e14749ae09f38
      var fs = require("fs");
      if (_scriptName.startsWith("file:")) {
        scriptDirectory = require("path").dirname(require("url").fileURLToPath(_scriptName)) + "/";
-@@ -1745,7 +1763,12 @@ async function Module2(moduleArg = {}) {
+@@ -1621,7 +1621,7 @@ async function Module2(moduleArg = {}) {
+   var wasmBinary;
+   var ABORT = false;
+   var EXITSTATUS;
+-  var isFileURI = /* @__PURE__ */ __name((filename) => filename.startsWith("file://"), "isFileURI");
++  var isFileURI = /* @__PURE__ */ __name((filename) => typeof filename === 'string' && filename.startsWith("file://"), "isFileURI");
+   var readyPromiseResolve, readyPromiseReject;
+   var wasmMemory;
+   var HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;
+@@ -1706,6 +1706,7 @@ async function Module2(moduleArg = {}) {
+   __name(abort, "abort");
+   var wasmBinaryFile;
+   function findWasmBinary() {
++    return treeSitterWasmBytes;
+     if (Module["locateFile"]) {
+       return locateFile("web-tree-sitter.wasm");
+     }
+@@ -1735,8 +1736,7 @@ async function Module2(moduleArg = {}) {
+   __name(getWasmBinary, "getWasmBinary");
+   async function instantiateArrayBuffer(binaryFile, imports) {
+     try {
+-      var binary2 = await getWasmBinary(binaryFile);
+-      var instance2 = await WebAssembly.instantiate(binary2, imports);
++      var instance2 = await WebAssembly.instantiate(binaryFile, imports);
+       return instance2;
+     } catch (reason) {
+       err(`failed to asynchronously prepare wasm: ${reason}`);
+@@ -1745,7 +1745,7 @@ async function Module2(moduleArg = {}) {
    }
    __name(instantiateArrayBuffer, "instantiateArrayBuffer");
    async function instantiateAsync(binary2, binaryFile, imports) {
 -    if (!binary2 && !isFileURI(binaryFile) && !ENVIRONMENT_IS_NODE) {
 +    if (!binary2 && !isFileURI(binaryFile) && !false) {
-+      const bytes = decodeBase64DataUri(binaryFile);
-+      if (bytes !== undefined) {
-+        return await WebAssembly.instantiate(bytes, imports);
-+      }
-+
        try {
          var response = fetch(binaryFile, {
            credentials: "same-origin"
+@@ -1798,7 +1798,7 @@ async function Module2(moduleArg = {}) {
+       });
+     }
+     wasmBinaryFile ??= findWasmBinary();
+-    var result = await instantiateAsync(wasmBinary, wasmBinaryFile, info2);
++    var result = await instantiateArrayBuffer(wasmBinaryFile, info2);
+     var exports = receiveInstantiationResult(result);
+     return exports;
+   }
