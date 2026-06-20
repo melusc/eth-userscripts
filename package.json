@@ -9,9 +9,9 @@
 	},
 	"description": "",
 	"devDependencies": {
-		"@babel/parser": "^7.29.3",
-		"@babel/traverse": "^7.29.0",
-		"@babel/types": "^7.29.0",
+		"@babel/parser": "^8.0.0",
+		"@babel/traverse": "^8.0.0",
+		"@babel/types": "^8.0.0",
 		"@lusc/eslint-config": "^11.0.0",
 		"@lusc/tsconfig": "^7.2.0",
 		"@types/babel__traverse": "^7.28.0",
