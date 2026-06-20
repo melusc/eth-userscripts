@@ -70,6 +70,10 @@ const config = (environment = {}) => ({
 				test: /\.ts$/,
 				use: ['ts-loader'],
 			},
+			{
+				test: /\.wasm$/,
+				type: 'asset/inline',
+			},
 		],
 	},
 });

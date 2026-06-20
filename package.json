@@ -4,8 +4,8 @@
 		"email": "oss@lusc.ch"
 	},
 	"dependencies": {
-		"prettier": "^3.8.3",
-		"prettier-plugin-java": "^2.8.1"
+		"prettier": "^3.8.4",
+		"prettier-plugin-java": "^2.9.7"
 	},
 	"description": "",
 	"devDependencies": {
@@ -13,18 +13,18 @@
 		"@babel/traverse": "^8.0.0",
 		"@babel/types": "^8.0.0",
 		"@lusc/eslint-config": "^11.0.0",
-		"@lusc/tsconfig": "^7.2.0",
+		"@lusc/tsconfig": "^7.2.1",
 		"@types/babel__traverse": "^7.28.0",
-		"@types/node": "^24.12.4",
+		"@types/node": "^24.13.2",
 		"clean-webpack-plugin": "^4.0.0",
 		"concurrently": "^10.0.3",
-		"eslint": "^10.3.0",
-		"minimizer-webpack-plugin": "^5.6.0",
+		"eslint": "^10.5.0",
+		"minimizer-webpack-plugin": "^5.6.1",
 		"serve": "^14.2.6",
-		"ts-loader": "^9.5.7",
+		"ts-loader": "^9.6.1",
 		"typescript": "^6.0.3",
-		"webpack": "^5.106.2",
-		"webpack-cli": "^7.0.2"
+		"webpack": "^5.107.2",
+		"webpack-cli": "^7.0.3"
 	},
 	"type": "module",
 	"license": "GPL-3.0-or-later",
@@ -40,9 +40,9 @@
 		"check-metadata": "node scripts/check-metadata.js"
 	},
 	"engines": {
-		"node": "^24.15.0"
+		"node": "^24.17.0"
 	},
 	"sideEffects": false,
 	"version": "1.0.0",
-	"packageManager": "pnpm@11.1.0"
+	"packageManager": "pnpm@11.7.0"
 }
