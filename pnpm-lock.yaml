@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  web-tree-sitter: e58c577d7c6a5d83419734b9598ce5741da1063b0a2632c0329244ad7741224a
+
 importers:
 
   .:
@@ -2940,7 +2943,7 @@ snapshots:
   prettier-plugin-java@2.9.7(prettier@3.8.4):
     dependencies:
       prettier: 3.8.4
-      web-tree-sitter: 0.26.9
+      web-tree-sitter: 0.26.9(patch_hash=e58c577d7c6a5d83419734b9598ce5741da1063b0a2632c0329244ad7741224a)
 
   prettier@3.8.4: {}
 
@@ -3228,7 +3231,7 @@ snapshots:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
 
-  web-tree-sitter@0.26.9: {}
+  web-tree-sitter@0.26.9(patch_hash=e58c577d7c6a5d83419734b9598ce5741da1063b0a2632c0329244ad7741224a): {}
 
   webpack-cli@7.0.3(webpack@5.107.2):
     dependencies:
