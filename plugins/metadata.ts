@@ -12,13 +12,9 @@
 */
 
 import {parse, type ParseResult} from '@babel/parser';
-import traverse_ from '@babel/traverse';
+import traverse from '@babel/traverse';
 import type {CommentBlock, CommentLine} from '@babel/types';
 import webpack, {type Compiler} from 'webpack';
-
-// @ts-expect-error Import is messed up
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const traverse: typeof traverse_ = traverse_.default;
 
 class MetadataParser {
 	#kv = new Map<string, string[]>();
