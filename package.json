@@ -5,7 +5,7 @@
 	},
 	"dependencies": {
 		"prettier": "^3.8.4",
-		"prettier-plugin-java": "^2.9.7"
+		"prettier-plugin-java": "^2.10.1"
 	},
 	"description": "",
 	"devDependencies": {
@@ -21,9 +21,9 @@
 		"eslint": "^10.5.0",
 		"minimizer-webpack-plugin": "^5.6.1",
 		"serve": "^14.2.6",
-		"ts-loader": "^9.6.1",
+		"ts-loader": "^9.6.2",
 		"typescript": "^6.0.3",
-		"webpack": "^5.107.2",
+		"webpack": "^5.108.0",
 		"webpack-cli": "^7.0.3"
 	},
 	"type": "module",
@@ -40,9 +40,9 @@
 		"check-metadata": "node scripts/check-metadata.js"
 	},
 	"engines": {
-		"node": "^24.17.0"
+		"node": "^24.18.0"
 	},
 	"sideEffects": false,
 	"version": "1.0.0",
-	"packageManager": "pnpm@11.7.0"
+	"packageManager": "pnpm@11.9.0"
 }
