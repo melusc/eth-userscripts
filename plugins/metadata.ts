@@ -16,6 +16,11 @@ import traverse from '@babel/traverse';
 import type {CommentBlock, CommentLine} from '@babel/types';
 import webpack, {type Compiler} from 'webpack';
 
+const collator = new Intl.Collator('en-GB', {
+	numeric: true,
+	sensitivity: 'base',
+});
+
 class MetadataParser {
 	#kv = new Map<string, string[]>();
 
@@ -68,7 +73,7 @@ class MetadataParser {
 				valueArray.map(value => (value ? `@${key} ${value}` : `@${key}`)),
 			)
 			.toArray()
-			.toSorted();
+			.toSorted(collator.compare);
 	}
 }
 
@@ -126,7 +131,7 @@ function resolveGrants(source: ParseResult) {
 		},
 	});
 
-	return [...grants].toSorted();
+	return [...grants].toSorted(collator.compare);
 }
 
 function enhanceMetadata(
