@@ -17,34 +17,46 @@ import {exit} from 'node:process';
 
 const outDirectory = new URL('../dist/', import.meta.url);
 
+/**
+ * @param {string} contents
+ * @returns {(regex: RegExp, message: string) => void}
+ */
+function createFind(contents) {
+	return (regex, message) => {
+		assert.match(contents, regex, message);
+	};
+}
+
 try {
-	for (const relativePath of readdir(outDirectory, {recursive: true})) {
-		if (relativePath.endsWith('.user.js')) {
-			const path = new URL(relativePath, outDirectory);
-			const contents = readFile(path, 'utf8');
-			const name = relativePath.split(/[\\/]/).at(-1);
+	const files = readdir(outDirectory, {recursive: true});
 
-			const find = (s, message) => {
-				assert.match(contents, s, message);
-			};
-
-			find(
-				/^\/\/\s*==UserScript==$/m,
-				`Did not start metadata block with ==UserScript== in ${name}.`,
-			);
-			find(
-				/^\/\/\s*==\/UserScript==$/m,
-				`Did not end metadata block with ==/UserScript== in ${name}.`,
-			);
-			find(/^\/\/\s*@name\s+/m, `Did not have @name in ${name}.`);
-			find(
-				/^\/\/\s*@version\s+\d+\.\d+\.\d+$/m,
-				`Did not declare version using semver in ${name}.`,
-			);
+	for (const relativePath of files) {
+		if (!relativePath.endsWith('.user.js')) {
+			continue;
 		}
+
+		const path = new URL(relativePath, outDirectory);
+		const contents = readFile(path, 'utf8');
+		const name = relativePath.split(/[\\/]/).at(-1);
+
+		const find = createFind(contents);
+
+		find(
+			/^\/\/\s*==UserScript==$/m,
+			`Did not start metadata block with ==UserScript== in ${name}.`,
+		);
+		find(
+			/^\/\/\s*==\/UserScript==$/m,
+			`Did not end metadata block with ==/UserScript== in ${name}.`,
+		);
+		find(/^\/\/\s*@name\s+/m, `Did not have @name in ${name}.`);
+		find(
+			/^\/\/\s*@version\s+\d+\.\d+\.\d+$/m,
+			`Did not declare version using semver in ${name}.`,
+		);
 	}
 } catch (error) {
 	// Print red
-	console.error('\u001B[31m%s\u001B[39m', error.message);
+	console.error('\u{1B}[31m%s\u{1B}[39m', error.message);
 	exit(1);
 }
