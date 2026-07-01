@@ -13,11 +13,11 @@ importers:
   .:
     dependencies:
       prettier:
-        specifier: ^3.8.4
-        version: 3.9.0
+        specifier: ^3.9.1
+        version: 3.9.3
       prettier-plugin-java:
         specifier: ^2.10.1
-        version: 2.10.1(patch_hash=dd0951b06cb0d24bfe6088de91d25a20499b7592185174a38ca8e704f8bacfc2)(prettier@3.9.0)
+        version: 2.10.1(patch_hash=dd0951b06cb0d24bfe6088de91d25a20499b7592185174a38ca8e704f8bacfc2)(prettier@3.9.3)
     devDependencies:
       '@babel/parser':
         specifier: ^8.0.0
@@ -47,7 +47,7 @@ importers:
         specifier: ^10.0.3
         version: 10.0.3
       eslint:
-        specifier: ^10.5.0
+        specifier: ^10.6.0
         version: 10.6.0
       minimizer-webpack-plugin:
         specifier: ^5.6.1
@@ -62,10 +62,10 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
       webpack:
-        specifier: ^5.108.0
+        specifier: ^5.108.1
         version: 5.108.1(webpack-cli@7.1.0)
       webpack-cli:
-        specifier: ^7.0.3
+        specifier: ^7.1.0
         version: 7.1.0(webpack@5.108.1)
 
 packages:
@@ -1377,8 +1377,8 @@ packages:
     peerDependencies:
       prettier: ^3.0.0
 
-  prettier@3.9.0:
-    resolution: {integrity: sha512-LjIqSIC5VYLzs9WedVmJ2ljNAGnU+DteIClbahu4L/DBeWjZ6iT/k1lAYyu9JUh+1xINxWadaPw/Pl63y/agAw==}
+  prettier@3.9.3:
+    resolution: {integrity: sha512-HWmu+K+zvHNpaMfSnYeqdqrDbR16cuIXaPx8WoHaviQkDJh1/0BNtOZmHVQI5jc3wXv0H1yXc9wjvFdXh+n3hQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2940,12 +2940,12 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-java@2.10.1(patch_hash=dd0951b06cb0d24bfe6088de91d25a20499b7592185174a38ca8e704f8bacfc2)(prettier@3.9.0):
+  prettier-plugin-java@2.10.1(patch_hash=dd0951b06cb0d24bfe6088de91d25a20499b7592185174a38ca8e704f8bacfc2)(prettier@3.9.3):
     dependencies:
-      prettier: 3.9.0
+      prettier: 3.9.3
       web-tree-sitter: 0.26.9(patch_hash=7b659e42275dcd9ed76f138759cc5914f16ee89fe94eb1a9c998aec22e7558be)
 
-  prettier@3.9.0: {}
+  prettier@3.9.3: {}
 
   punycode@2.3.1: {}
 
