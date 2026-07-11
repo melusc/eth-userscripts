@@ -4,18 +4,18 @@
 		"email": "oss@lusc.ch"
 	},
 	"dependencies": {
-		"prettier": "^3.9.1",
-		"prettier-plugin-java": "^2.10.1"
+		"prettier": "^3.9.4",
+		"prettier-plugin-java": "^2.10.2"
 	},
 	"description": "",
 	"devDependencies": {
 		"@babel/parser": "^8.0.0",
 		"@babel/traverse": "^8.0.0",
 		"@babel/types": "^8.0.0",
-		"@lusc/eslint-config": "^15.0.0",
+		"@lusc/eslint-config": "^15.0.2",
 		"@lusc/tsconfig": "^7.2.1",
 		"@types/babel__traverse": "^7.28.0",
-		"@types/node": "^24.13.2",
+		"@types/node": "^24.13.3",
 		"clean-webpack-plugin": "^4.0.0",
 		"concurrently": "^10.0.3",
 		"eslint": "^10.6.0",
@@ -23,8 +23,8 @@
 		"serve": "^14.2.6",
 		"ts-loader": "^9.6.2",
 		"typescript": "^6.0.3",
-		"webpack": "^5.108.1",
-		"webpack-cli": "^7.1.0"
+		"webpack": "^5.108.4",
+		"webpack-cli": "^7.2.1"
 	},
 	"type": "module",
 	"license": "GPL-3.0-or-later",
@@ -44,5 +44,5 @@
 	},
 	"sideEffects": false,
 	"version": "1.0.0",
-	"packageManager": "pnpm@11.9.0"
+	"packageManager": "pnpm@11.10.0"
 }
