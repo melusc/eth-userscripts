@@ -1,7 +1,6 @@
 # ETH Userscripts
 
-This repository does not accept unprompted pull requests.
-Open an issue first and we can discuss from there.
+If you wish to add or improve a userscript, please open an issue first.
 
 ## Installation
 
