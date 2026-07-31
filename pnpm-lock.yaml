@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  prettier-plugin-java: dd0951b06cb0d24bfe6088de91d25a20499b7592185174a38ca8e704f8bacfc2
+  prettier-plugin-java: fb6ad01157cede76903b79bf8efd216c16f604ac122bfa91ae793a7a1b02c3e8
   web-tree-sitter: 7b659e42275dcd9ed76f138759cc5914f16ee89fe94eb1a9c998aec22e7558be
 
 importers:
@@ -16,8 +16,8 @@ importers:
         specifier: ^3.9.4
         version: 3.9.5
       prettier-plugin-java:
-        specifier: ^2.10.2
-        version: 2.10.2(patch_hash=dd0951b06cb0d24bfe6088de91d25a20499b7592185174a38ca8e704f8bacfc2)(prettier@3.9.5)
+        specifier: ^2.10.3
+        version: 2.10.3(patch_hash=fb6ad01157cede76903b79bf8efd216c16f604ac122bfa91ae793a7a1b02c3e8)(prettier@3.9.5)
     devDependencies:
       '@babel/parser':
         specifier: ^8.0.0
@@ -1417,8 +1417,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-java@2.10.2:
-    resolution: {integrity: sha512-oOXUBqb0BKfL//ZeYFcsRtbm4h8jdicg1axbBrXh2tnUcAcKAyFCl3gUL7bN7kwDwFRraQop1RF9BZk+K6pmoQ==}
+  prettier-plugin-java@2.10.3:
+    resolution: {integrity: sha512-/g52mTbsN2ee8JjLRpBWGGmcmRhdv2zRWyj4QbsL9CQ+nKR022GRJhebwEpRyaCc8hLV6aO3JPGNQyXp1DPrCA==}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -1703,8 +1703,8 @@ packages:
     resolution: {integrity: sha512-6i/00NBjP4yGPs+caKSyRfpTF/8Torsu0MOW3mMzIbhgISFder8i7xbqgHlLMwJrdiN8ndBV3UA1/AfzPSr+jg==}
     engines: {node: '>=10.13.0'}
 
-  web-tree-sitter@0.26.9:
-    resolution: {integrity: sha512-YJwSHANl6XFgeEjB8nitgj0qZYt5gkIesJ4w2srS2wcLB4GUa4xcOkM0YaMsU6WNR53YVIkDSY7Ej4pf3IXtCA==}
+  web-tree-sitter@0.26.11:
+    resolution: {integrity: sha512-Q5Dm3YTIXSXuH6FxX6RuzX2Qwpc4DPGiYMU87Wg5Z8OIStiQFiUex4zMDc0vBTw78EphaYJacncJghCHzbZptg==}
 
   web-worker@1.5.0:
     resolution: {integrity: sha512-RiMReJrTAiA+mBjGONMnjVDP2u3p9R1vkcGz6gDIrOMT3oGuYwX2WRMYI9ipkphSuE5XKEhydbhNEJh4NY9mlw==}
@@ -3062,10 +3062,10 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-java@2.10.2(patch_hash=dd0951b06cb0d24bfe6088de91d25a20499b7592185174a38ca8e704f8bacfc2)(prettier@3.9.5):
+  prettier-plugin-java@2.10.3(patch_hash=fb6ad01157cede76903b79bf8efd216c16f604ac122bfa91ae793a7a1b02c3e8)(prettier@3.9.5):
     dependencies:
       prettier: 3.9.5
-      web-tree-sitter: 0.26.9(patch_hash=7b659e42275dcd9ed76f138759cc5914f16ee89fe94eb1a9c998aec22e7558be)
+      web-tree-sitter: 0.26.11(patch_hash=7b659e42275dcd9ed76f138759cc5914f16ee89fe94eb1a9c998aec22e7558be)
 
   prettier@3.9.5: {}
 
@@ -3360,7 +3360,7 @@ snapshots:
     dependencies:
       graceful-fs: 4.2.11
 
-  web-tree-sitter@0.26.9(patch_hash=7b659e42275dcd9ed76f138759cc5914f16ee89fe94eb1a9c998aec22e7558be): {}
+  web-tree-sitter@0.26.11(patch_hash=7b659e42275dcd9ed76f138759cc5914f16ee89fe94eb1a9c998aec22e7558be): {}
 
   web-worker@1.5.0: {}
 
