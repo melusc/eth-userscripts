@@ -1,5 +1,5 @@
 diff --git a/dist/index.mjs b/dist/index.mjs
-index ad2498336527397914f097450cb26503c13de9b7..a48ab42508d648d2618d1fb1f08124edc6adac5a 100644
+index f664fc1f4af47dc5a445d1c42f45fe12d5dbb191..fde3b5b5ebd150a181c1e0243b5b747c6b022c8a 100644
 --- a/dist/index.mjs
 +++ b/dist/index.mjs
 @@ -1,6 +1,7 @@
@@ -10,7 +10,7 @@ index ad2498336527397914f097450cb26503c13de9b7..a48ab42508d648d2618d1fb1f08124ed
  //#region src/options.ts
  var options_default = {
  	arrowParens: {
-@@ -2360,7 +2361,7 @@ var parser_default = {
+@@ -2381,7 +2382,7 @@ var parser_default = {
  const parser = (async () => {
  	await Parser.init();
  	const parser = new Parser();
