@@ -205,8 +205,15 @@ export function makeMetadataPlugin(
 		name: 'userscript-metadata-plugin',
 		setup(build) {
 			build.onEnd(async result => {
+				if (result.errors.length > 0) return;
+
+				if (!result.metafile) {
+					console.warn('metafile is absent, did you set `metafile: true`?');
+					return;
+				}
+
 				for (const [outputPath, meta] of Object.entries(
-					result.metafile!.outputs,
+					result.metafile.outputs,
 				)) {
 					if (!outputPath.endsWith('.user.js')) {
 						continue;
