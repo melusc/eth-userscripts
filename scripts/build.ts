@@ -59,7 +59,7 @@ const esbuildOptions = {
 	logLevel: 'info',
 	bundle: true,
 	metafile: true,
-	legalComments: 'linked',
+	legalComments: 'eof',
 	format: 'iife',
 	charset: 'utf8',
 	loader: {
