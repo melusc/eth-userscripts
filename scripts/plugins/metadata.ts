@@ -107,7 +107,8 @@ function enhanceMetadata(
 	outdir: string,
 	metadataConfig: MetadataConfig,
 ): void {
-	const grants = resolveGrants(source);
+	const oldGrants = (metadata.getKey('grants') ?? []).filter(s => s !== 'none');
+	const grants = new Set([...oldGrants, ...resolveGrants(source)]);
 
 	if (grants.size > 0) {
 		metadata.clearKey('grant');
@@ -236,7 +237,9 @@ export function makeMetadataPlugin(options: MetadataConfig): esbuild.Plugin {
 					const entry = path.join(cwd, meta.entryPoint!);
 					const outputSource = outputs[output]!.text;
 
-					promises.push(addMetadataBlock(entry, output, outputSource, outdir, options));
+					promises.push(
+						addMetadataBlock(entry, output, outputSource, outdir, options),
+					);
 				}
 
 				await Promise.all(promises);
