@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {readFile, writeFile} from 'node:fs/promises';
+import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 
 import esbuild from 'esbuild';
@@ -169,11 +169,11 @@ function extractMetaBlock(source: string, assetName: string): MetadataParser {
 async function addMetadataBlock(
 	entryPoint: string,
 	outputPath: string,
+	outputSource: string,
 	outdir: string,
 	metadataConfig: MetadataConfig,
 ) {
 	const entrySource = await readFile(entryPoint, 'utf8');
-	const outputSource = await readFile(outputPath, 'utf8');
 
 	const assetName = path.basename(entryPoint);
 	const metadata = extractMetaBlock(entrySource, assetName);
@@ -187,6 +187,8 @@ async function addMetadataBlock(
 
 	const outputLines = [...metadataLines, outputSource];
 
+	const parent = path.dirname(outputPath);
+	await mkdir(parent, {recursive: true});
 	await writeFile(outputPath, outputLines.join('\n'));
 }
 
@@ -208,8 +210,18 @@ export function makeMetadataPlugin(
 				if (result.errors.length > 0) return;
 
 				if (!result.metafile) {
-					console.warn('metafile is absent, did you set `metafile: true`?');
+					console.warn('metafile is unset, did you set `metafile: true`?');
 					return;
+				}
+
+				if (!result.outputFiles) {
+					console.warn('outputFiles is unset, did you set `write: false`?');
+					return;
+				}
+
+				const outputs: Record<string, esbuild.OutputFile> = {};
+				for (const output of result.outputFiles) {
+					outputs[output.path] = output;
 				}
 
 				for (const [outputPath, meta] of Object.entries(
@@ -221,7 +233,15 @@ export function makeMetadataPlugin(
 
 					const output = path.join(options.cwd, outputPath);
 					const entry = path.join(options.cwd, meta.entryPoint!);
-					await addMetadataBlock(entry, output, outdir, options.metadata);
+					const outputSource = outputs[output]!.text;
+
+					await addMetadataBlock(
+						entry,
+						output,
+						outputSource,
+						outdir,
+						options.metadata,
+					);
 				}
 			});
 		},

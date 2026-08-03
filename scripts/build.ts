@@ -62,6 +62,7 @@ const esbuildOptions = {
 	legalComments: 'eof',
 	format: 'iife',
 	charset: 'utf8',
+	write: false,
 	loader: {
 		'.wasm': 'binary',
 	},
