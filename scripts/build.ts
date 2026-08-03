@@ -39,16 +39,7 @@ const cwd = path.resolve(import.meta.dirname, '../');
 
 const outdir = 'dist';
 
-try {
-	await rm(path.resolve(cwd, outdir), {recursive: true});
-} catch (error: unknown) {
-	if (
-		!(error instanceof Error) ||
-		(error as NodeJS.ErrnoException).code !== 'ENOENT'
-	) {
-		throw error;
-	}
-}
+await rm(path.resolve(cwd, outdir), {recursive: true, force: true});
 
 const esbuildOptions = {
 	absWorkingDir: cwd,
