@@ -132,9 +132,19 @@ function enhanceMetadata(
 
 function extractMetaBlock(source: string, assetName: string): MetadataParser {
 	const start = source.search(/^\/\/\s*==UserScript==\s*$/m);
+
+	if (start === -1) {
+		throw new Error(`Could not find // ==UserScript== in ${assetName}`);
+	}
+
 	// Match newline before the line too, so when we slice it,
 	// the new line isn't included
 	const end = source.search(/\s+^\/\/\s*==\/UserScript==\s*$/m);
+
+	if (end === -1) {
+		throw new Error(`Could not find // ==/UserScript== in ${assetName}`);
+	}
+
 	const comments = source.slice(start, end).split('\n');
 
 	const metadataOptions: string[] = [];
