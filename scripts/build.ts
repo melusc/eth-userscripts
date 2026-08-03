@@ -61,7 +61,7 @@ const esbuildOptions = {
 	metafile: true,
 	legalComments: 'linked',
 	format: 'iife',
-	charset: 'ascii',
+	charset: 'utf8',
 	loader: {
 		'.wasm': 'binary',
 	},

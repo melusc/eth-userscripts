@@ -162,8 +162,8 @@ async function addMetadataBlock(
 	outdir: string,
 	metadataConfig: MetadataConfig,
 ) {
-	const entrySource = await readFile(entryPoint, 'ascii');
-	const outputSource = await readFile(outputPath, 'ascii');
+	const entrySource = await readFile(entryPoint, 'utf8');
+	const outputSource = await readFile(outputPath, 'utf8');
 
 	const assetName = path.basename(entryPoint);
 	const metadata = extractMetaBlock(entrySource, assetName);
