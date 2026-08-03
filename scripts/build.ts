@@ -36,7 +36,6 @@ const {values: flags} = parseArgs({
 });
 
 const cwd = path.resolve(import.meta.dirname, '../');
-
 const outdir = 'dist';
 
 await rm(path.resolve(cwd, outdir), {recursive: true, force: true});
@@ -59,15 +58,11 @@ const esbuildOptions = {
 	},
 	plugins: [
 		makeMetadataPlugin({
-			cwd,
-			outdir,
-			metadata: {
-				author: 'Luca Schnellmann <oss@lusc.ch>',
-				license: 'GPL-3.0-or-later',
-				homepageUrl: 'https://github.com/melusc/eth-userscripts',
-				resolveUpdateUrl(assetPath) {
-					return new URL(assetPath, 'https://userscripts.lusc.ch/eth/');
-				},
+			author: 'Luca Schnellmann <oss@lusc.ch>',
+			license: 'GPL-3.0-or-later',
+			homepageUrl: 'https://github.com/melusc/eth-userscripts',
+			resolveUpdateUrl(assetPath) {
+				return new URL(assetPath, 'https://userscripts.lusc.ch/eth/');
 			},
 		}),
 	],

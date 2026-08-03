@@ -192,20 +192,19 @@ async function addMetadataBlock(
 	await writeFile(outputPath, outputLines.join('\n'));
 }
 
-type MetadataPluginOptions = {
-	readonly cwd: string;
-	readonly outdir: string;
-	readonly metadata: MetadataConfig;
-};
-
-export function makeMetadataPlugin(
-	options: MetadataPluginOptions,
-): esbuild.Plugin {
-	const outdir = path.resolve(options.cwd, options.outdir);
-
+export function makeMetadataPlugin(options: MetadataConfig): esbuild.Plugin {
 	return {
 		name: 'userscript-metadata-plugin',
 		setup(build) {
+			const outdir = build.initialOptions.outdir;
+			const cwd = build.initialOptions.absWorkingDir;
+
+			if (!outdir || !cwd) {
+				throw new Error(
+					'outdir and absWorkingDir must be set in esbuild options',
+				);
+			}
+
 			build.onEnd(async result => {
 				if (result.errors.length > 0) return;
 
@@ -231,17 +230,11 @@ export function makeMetadataPlugin(
 						continue;
 					}
 
-					const output = path.join(options.cwd, outputPath);
-					const entry = path.join(options.cwd, meta.entryPoint!);
+					const output = path.join(cwd, outputPath);
+					const entry = path.join(cwd, meta.entryPoint!);
 					const outputSource = outputs[output]!.text;
 
-					await addMetadataBlock(
-						entry,
-						output,
-						outputSource,
-						outdir,
-						options.metadata,
-					);
+					await addMetadataBlock(entry, output, outputSource, outdir, options);
 				}
 			});
 		},
