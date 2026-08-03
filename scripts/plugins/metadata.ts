@@ -223,6 +223,8 @@ export function makeMetadataPlugin(options: MetadataConfig): esbuild.Plugin {
 					outputs[output.path] = output;
 				}
 
+				const promises: Promise<void>[] = [];
+
 				for (const [outputPath, meta] of Object.entries(
 					result.metafile.outputs,
 				)) {
@@ -234,8 +236,10 @@ export function makeMetadataPlugin(options: MetadataConfig): esbuild.Plugin {
 					const entry = path.join(cwd, meta.entryPoint!);
 					const outputSource = outputs[output]!.text;
 
-					await addMetadataBlock(entry, output, outputSource, outdir, options);
+					promises.push(addMetadataBlock(entry, output, outputSource, outdir, options));
 				}
+
+				await Promise.all(promises);
 			});
 		},
 	} satisfies esbuild.Plugin;
