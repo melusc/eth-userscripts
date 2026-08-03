@@ -1,8 +1,14 @@
 // eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unsafe-member-access */
 
-// Modified from <https://stackoverflow.com/a/39165137/> by Venryx
-// Licensed under CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>
+/*!
+ * This file contains code copied and modified from
+ * <https://stackoverflow.com/a/39165137/> by Venryx
+ * Licensed under CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>
+ */
+
+// This file expressly NOT licensed under the GNU GPL v3 which is used
+// everywhere else in this repository.
 
 function GetCompFiber(fiber: any) {
 	let parentFiber = fiber.return;
