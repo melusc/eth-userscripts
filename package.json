@@ -9,35 +9,28 @@
 	},
 	"description": "",
 	"devDependencies": {
-		"@babel/parser": "^8.0.4",
-		"@babel/traverse": "^8.0.4",
-		"@babel/types": "^8.0.4",
 		"@lusc/eslint-config": "^18.0.0",
 		"@lusc/tsconfig": "^7.2.1",
-		"@types/babel__traverse": "^7.28.0",
 		"@types/node": "^24.13.3",
-		"clean-webpack-plugin": "^4.0.0",
 		"concurrently": "^10.0.4",
+		"esbuild": "^0.28.1",
 		"eslint": "^10.8.0",
-		"minimizer-webpack-plugin": "^5.6.1",
 		"serve": "^14.2.6",
-		"ts-loader": "^9.6.2",
-		"typescript": "^6.0.3",
-		"webpack": "^5.109.2",
-		"webpack-cli": "^7.2.2"
+		"typescript": "^6.0.3"
 	},
 	"type": "module",
 	"license": "GPL-3.0-or-later",
 	"name": "eth-userscripts",
 	"private": true,
 	"scripts": {
-		"build": "tsc --noEmit && pnpm webpack && pnpm check-metadata",
+		"build": "pnpm typecheck && pnpm esbuild",
+		"esbuild": "node scripts/build.ts",
+		"esbuild:w": "node scripts/build.ts --watch",
 		"fmt": "prettier -w . && eslint --fix",
-		"start": "concurrently pnpm:webpack:w pnpm:serve -r -k",
-		"webpack": "webpack -c production.config.js --env PROD",
-		"webpack:w": "webpack -c production.config.js -w",
-		"serve": "serve dist -L",
-		"check-metadata": "node scripts/check-metadata.js"
+		"start": "concurrently pnpm:esbuild:w pnpm:typecheck:w pnpm:serve -r -k",
+		"typecheck": "tsc --noEmit && tsc -p scripts",
+		"typecheck:w": "tsc --noEmit --watch --preserveWatchOutput",
+		"serve": "serve dist -L"
 	},
 	"engines": {
 		"node": "^24.18.1"

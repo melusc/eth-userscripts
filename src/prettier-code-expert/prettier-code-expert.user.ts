@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Prettier Code Expert
 // @match       https://expert.ethz.ch/*
-// @version     1.2.0
+// @version     1.2.1
 // @run-at      document-start
 // ==/UserScript==
 
@@ -25,10 +25,6 @@ import prettierPluginJava from 'prettier-plugin-java';
 import {domReady} from '../shared/dom-ready.js';
 
 import {FindReact} from './find-react.js';
-
-if (location.protocol === 'http:') {
-	location.protocol = 'https:';
-}
 
 const formatButtonId = 'prettier-code-expert-format-button';
 const queries = {
