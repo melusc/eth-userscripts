@@ -26,6 +26,12 @@ const collator = new Intl.Collator('en-GB', {
 	numeric: true,
 });
 
+async function writeFileParent(writePath: string, data: string) {
+	const parent = path.dirname(writePath);
+	await mkdir(parent, {recursive: true});
+	await writeFile(writePath, data, 'utf8');
+}
+
 class MetadataParser {
 	#kv = new Map<string, string[]>();
 
@@ -188,9 +194,7 @@ async function addMetadataBlock(
 
 	const outputLines = [...metadataLines, outputSource];
 
-	const parent = path.dirname(outputPath);
-	await mkdir(parent, {recursive: true});
-	await writeFile(outputPath, outputLines.join('\n'));
+	await writeFileParent(outputPath, outputLines.join('\n'));
 }
 
 export function makeMetadataPlugin(options: MetadataConfig): esbuild.Plugin {
@@ -229,13 +233,14 @@ export function makeMetadataPlugin(options: MetadataConfig): esbuild.Plugin {
 				for (const [outputPath, meta] of Object.entries(
 					result.metafile.outputs,
 				)) {
-					if (!outputPath.endsWith('.user.js')) {
-						continue;
-					}
-
 					const output = path.join(cwd, outputPath);
 					const entry = path.join(cwd, meta.entryPoint!);
 					const outputSource = outputs[output]!.text;
+
+					if (!output.endsWith('.user.js')) {
+						await writeFileParent(output, outputSource);
+						continue;
+					}
 
 					promises.push(
 						addMetadataBlock(entry, output, outputSource, outdir, options),
