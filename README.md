@@ -1,7 +1,5 @@
 # ETH Userscripts
 
-If you wish to add or improve a userscript, please open an issue first.
-
 ## Installation
 
 These extensions are distributed as [Userscripts](https://en.wikipedia.org/wiki/Userscript). They can be installed using a userscript manager.
@@ -67,3 +65,5 @@ version 3 or (at your option) any later version:
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in the work by you, as defined in the license above, shall be
 licensed as above, without any additional terms or conditions.
+
+If you wish to add or improve a userscript, please open an issue first.
