@@ -49,23 +49,21 @@ jobs:
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: dist
-      - name: Write ssh key
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "$SSH_KEY" > ~/.ssh/ssh-key
-          chmod 600 ~/.ssh/ssh-key
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
       - name: Sync dist
         run: |
-          # Trust host public key
-          echo "${{ secrets.SSH_HOST }} ${{ secrets.SSH_HOST_KEY }}" >> ~/.ssh/known_hosts
-          ssh-keygen -Hf ~/.ssh/known_hosts
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s %s\n' "$SSH_HOST" "$SSH_HOST_KEY" > ~/.ssh/known_hosts
+
+          eval "$(ssh-agent -s)" >/dev/null
+          trap 'ssh-agent -k >/dev/null 2>&1 || true' EXIT INT TERM
+          printf '%s\n' "$SSH_KEY" | ssh-add -t 300 -
 
           rsync --verbose --human-readable --archive \
             --checksum --delete \
-            -e "ssh -i ~/.ssh/ssh-key" \
-            . "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST}}:/var/www/eth-userscripts/"
-      - run: rm ~/.ssh/ssh-key
-        if: always()
+            --rsh "ssh -o StrictHostKeyChecking=yes" \
+            . "$SSH_USERNAME@$SSH_HOST:/"
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_HOST_KEY: ${{ secrets.SSH_HOST_KEY }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
