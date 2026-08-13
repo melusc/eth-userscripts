@@ -42,7 +42,7 @@ Currently, supported languages:
 
 This userscript adds a button on the Switch login page allowing a more easy redirect to the ETH login page.
 
-![Screenshot of the ETH login page redirect button on the Switch login page](images/switch-login-eth-button.png)
+![Screenshot of the ETH login page redirect button on the Switch login page](images/switch-login-eth-button.svg)
 
 ## Automatic Redirect
 
