@@ -9,7 +9,7 @@
 	},
 	"description": "",
 	"devDependencies": {
-		"@lusc/eslint-config": "^18.0.0",
+		"@lusc/eslint-config": "^19.0.0",
 		"@lusc/tsconfig": "^7.2.1",
 		"@types/node": "^24.13.3",
 		"concurrently": "^10.0.4",
