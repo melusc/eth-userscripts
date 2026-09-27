@@ -3,6 +3,7 @@ allowBuilds:
   unrs-resolver: false
 
 patchedDependencies:
+  '@astral-sh/ruff-wasm-web': patches/@astral-sh__ruff-wasm-web.patch
   prettier-plugin-java: patches/prettier-plugin-java.patch
   web-tree-sitter: patches/web-tree-sitter.patch
 

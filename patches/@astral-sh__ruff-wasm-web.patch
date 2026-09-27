@@ -1,0 +1,49 @@
+diff --git a/ruff_wasm.js b/ruff_wasm.js
+index 4a4bc8f86565551431b0717bd150feb559c1433f..2c2b04d03a469330726b0b7433e6a730a74b7a0b 100644
+--- a/ruff_wasm.js
++++ b/ruff_wasm.js
+@@ -1,3 +1,5 @@
++import ruffWasm from './ruff_wasm_bg.wasm';
++
+ /* @ts-self-types="./ruff_wasm.d.ts" */
+ 
+ /**
+@@ -769,24 +771,24 @@ async function __wbg_init(module_or_path) {
+     if (wasm !== undefined) return wasm;
+ 
+ 
+-    if (module_or_path !== undefined) {
+-        if (Object.getPrototypeOf(module_or_path) === Object.prototype) {
+-            ({module_or_path} = module_or_path)
+-        } else {
+-            console.warn('using deprecated parameters for the initialization function; pass a single object instead')
+-        }
+-    }
++    // if (module_or_path !== undefined) {
++    //     if (Object.getPrototypeOf(module_or_path) === Object.prototype) {
++    //         ({module_or_path} = module_or_path)
++    //     } else {
++    //         console.warn('using deprecated parameters for the initialization function; pass a single object instead')
++    //     }
++    // }
+ 
+-    if (module_or_path === undefined) {
+-        module_or_path = new URL('ruff_wasm_bg.wasm', import.meta.url);
+-    }
++    // if (module_or_path === undefined) {
++    //     module_or_path = new URL('ruff_wasm_bg.wasm', import.meta.url);
++    // }
+     const imports = __wbg_get_imports();
+ 
+-    if (typeof module_or_path === 'string' || (typeof Request === 'function' && module_or_path instanceof Request) || (typeof URL === 'function' && module_or_path instanceof URL)) {
+-        module_or_path = fetch(module_or_path);
+-    }
++    // if (typeof module_or_path === 'string' || (typeof Request === 'function' && module_or_path instanceof Request) || (typeof URL === 'function' && module_or_path instanceof URL)) {
++    //     module_or_path = fetch(module_or_path);
++    // }
+ 
+-    const { instance, module } = await __wbg_load(await module_or_path, imports);
++    const { instance, module } = await __wbg_load(ruffWasm, imports);
+ 
+     return __wbg_finalize_init(instance, module);
+ }

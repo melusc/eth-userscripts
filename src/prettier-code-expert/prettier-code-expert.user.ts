@@ -20,10 +20,11 @@
 // ==UserScript==
 // @name        Prettier Code Expert
 // @match       https://expert.ethz.ch/*
-// @version     1.2.3
+// @version     1.3.0
 // @run-at      document-start
 // ==/UserScript==
 
+import initRuff, {Workspace, PositionEncoding} from '@astral-sh/ruff-wasm-web';
 import type {Plugin} from 'prettier';
 import prettier from 'prettier/standalone';
 import prettierPluginJava from 'prettier-plugin-java';
@@ -51,7 +52,28 @@ function findState(element: HTMLElement): unknown {
 	return undefined;
 }
 
-async function formatCode(code: string, fileName: string) {
+async function formatPython(code: string): Promise<string> {
+	await initRuff();
+
+	const workspace = new Workspace(
+		{
+			'line-length': 80,
+			'indent-width': 2,
+			format: {
+				'indent-style': 'tab',
+				'quote-style': 'single',
+			},
+		},
+		PositionEncoding.Utf16,
+	);
+
+	return workspace.format(code);
+}
+
+async function formatCode(
+	code: string,
+	fileName: string,
+): Promise<string | undefined> {
 	let parser: string;
 	let plugin: Plugin;
 
@@ -59,6 +81,8 @@ async function formatCode(code: string, fileName: string) {
 	if (extension === 'java') {
 		parser = 'java';
 		plugin = prettierPluginJava;
+	} else if (extension === 'py') {
+		return formatPython(code);
 	} else {
 		alert(`Cannot format .${extension} files (yet).`);
 		return;
