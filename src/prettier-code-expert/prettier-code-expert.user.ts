@@ -20,7 +20,7 @@
 // ==UserScript==
 // @name        Prettier Code Expert
 // @match       https://expert.ethz.ch/*
-// @version     1.3.0
+// @version     1.3.1
 // @run-at      document-start
 // ==/UserScript==
 
@@ -60,7 +60,7 @@ async function formatPython(code: string): Promise<string> {
 			'line-length': 80,
 			'indent-width': 2,
 			format: {
-				'indent-style': 'tab',
+				'indent-style': 'space',
 				'quote-style': 'single',
 			},
 		},
