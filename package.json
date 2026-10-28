@@ -12,7 +12,7 @@
 	"devDependencies": {
 		"@lusc/eslint-config": "^21.0.0",
 		"@lusc/tsconfig": "^7.2.1",
-		"@types/node": "^24.13.3",
+		"@types/node": "^26.6.5",
 		"concurrently": "^10.0.4",
 		"esbuild": "^0.28.1",
 		"eslint": "^10.8.0",
