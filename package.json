@@ -34,7 +34,7 @@
 		"serve": "serve dist -L"
 	},
 	"engines": {
-		"node": "^24.18.1"
+		"node": "^26.13.0"
 	},
 	"sideEffects": false,
 	"version": "1.0.0",
