@@ -13,7 +13,6 @@
 		"@lusc/eslint-config": "^21.0.0",
 		"@lusc/tsconfig": "^8.0.0",
 		"@types/node": "^26.6.5",
-		"concurrently": "^10.0.4",
 		"esbuild": "^0.28.1",
 		"eslint": "^10.8.0",
 		"typescript": "^7.0.2"
@@ -27,10 +26,10 @@
 		"esbuild": "node scripts/build.ts",
 		"esbuild:w": "node scripts/build.ts --watch",
 		"fmt": "prettier -w . && eslint --fix",
-		"start": "concurrently pnpm:esbuild:w pnpm:typecheck:w pnpm:serve -r -k",
+		"start": "pnpm run '/:w$|serve$/'",
 		"typecheck": "tsc --noEmit && tsc -p scripts",
 		"typecheck:w": "tsc --noEmit --watch --preserveWatchOutput",
-		"serve": "python -m http.server -d dist"
+		"serve": "python -m http.server -d dist -b 127.0.0.1 3000"
 	},
 	"engines": {
 		"node": "^26.13.0"
