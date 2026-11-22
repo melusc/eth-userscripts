@@ -5,16 +5,16 @@
 	},
 	"dependencies": {
 		"@astral-sh/ruff-wasm-web": "^0.17.6",
-		"prettier": "^3.9.6",
+		"prettier": "^3.10.1",
 		"prettier-plugin-java": "^2.12.0"
 	},
 	"description": "",
 	"devDependencies": {
-		"@lusc/eslint-config": "^21.0.0",
+		"@lusc/eslint-config": "^21.1.0",
 		"@lusc/tsconfig": "^8.0.0",
-		"@types/node": "^26.6.5",
-		"esbuild": "^0.28.1",
-		"eslint": "^10.8.0",
+		"@types/node": "^26.6.6",
+		"esbuild": "^0.28.2",
+		"eslint": "^10.15.0",
 		"typescript": "^7.0.2"
 	},
 	"type": "module",
@@ -32,9 +32,9 @@
 		"serve": "python -m http.server -d dist -b 127.0.0.1 3000"
 	},
 	"engines": {
-		"node": "^26.13.0"
+		"node": "^26.13.1"
 	},
 	"sideEffects": false,
 	"version": "1.0.0",
-	"packageManager": "pnpm@12.3.1+sha512.3c14c15408d1489d350f8ed7f93361d26cc707054f6849a4eea3bb7407ff4fe4564b413a1c421a773a176ab1168a8df1c7d548f2cd0dc7d344f58c4e680a5b18"
+	"packageManager": "pnpm@12.21.0+sha512.66fd8278ee28935ce951792d34367ff3af5c432a2756445823029533835b8da529bbe0be5130afd56ed0713fb8789e47bad82d93bd5ae2fe54b15562d6276ef0"
 }
