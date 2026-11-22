@@ -16,7 +16,6 @@
 		"concurrently": "^10.0.4",
 		"esbuild": "^0.28.1",
 		"eslint": "^10.8.0",
-		"serve": "^14.2.6",
 		"typescript": "^7.0.2"
 	},
 	"type": "module",
@@ -31,7 +30,7 @@
 		"start": "concurrently pnpm:esbuild:w pnpm:typecheck:w pnpm:serve -r -k",
 		"typecheck": "tsc --noEmit && tsc -p scripts",
 		"typecheck:w": "tsc --noEmit --watch --preserveWatchOutput",
-		"serve": "serve dist -L"
+		"serve": "python -m http.server -d dist"
 	},
 	"engines": {
 		"node": "^26.13.0"
