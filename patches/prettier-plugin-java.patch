@@ -1,5 +1,5 @@
 diff --git a/dist/index.mjs b/dist/index.mjs
-index f664fc1f4af47dc5a445d1c42f45fe12d5dbb191..fde3b5b5ebd150a181c1e0243b5b747c6b022c8a 100644
+index 5d97aa0cabf2a7fbbe5ebf485a98815f829af01d..5b0085b162738de4c6318259031ce7c28221a9aa 100644
 --- a/dist/index.mjs
 +++ b/dist/index.mjs
 @@ -1,6 +1,7 @@
@@ -7,10 +7,10 @@ index f664fc1f4af47dc5a445d1c42f45fe12d5dbb191..fde3b5b5ebd150a181c1e0243b5b747c
  import { util } from "prettier";
  import { builders, utils } from "prettier/doc";
 +import treeSitterJavaOrchard from './tree-sitter-java_orchard.wasm';
- //#region src/options.ts
+ // src/options.ts
  var options_default = {
  	arrowParens: {
-@@ -2381,7 +2382,7 @@ var parser_default = {
+@@ -858,7 +859,7 @@ var parser_default = {
  const parser = (async () => {
  	await Parser.init();
  	const parser = new Parser();

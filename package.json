@@ -4,9 +4,9 @@
 		"email": "oss@lusc.ch"
 	},
 	"dependencies": {
-		"@astral-sh/ruff-wasm-web": "^0.16.9",
+		"@astral-sh/ruff-wasm-web": "^0.17.6",
 		"prettier": "^3.9.6",
-		"prettier-plugin-java": "^2.10.3"
+		"prettier-plugin-java": "^2.12.0"
 	},
 	"description": "",
 	"devDependencies": {

@@ -20,7 +20,7 @@
 // ==UserScript==
 // @name        Prettier Code Expert
 // @match       https://expert.ethz.ch/*
-// @version     1.3.1
+// @version     1.4.0
 // @run-at      document-start
 // ==/UserScript==
 
